@@ -19,7 +19,8 @@ void HttpClientController::setup()
 
 int HttpClientController::update()
 {
-  if (mProcStartSec != 0 && millis() - mProcStartSec > mWaitSec)
+  //if (mProcStartSec != 0 && millis() - mProcStartSec > mWaitSec)
+  if (false)
   {
     mState = StateNone;    
     mProcStartSec = 0;
@@ -40,7 +41,8 @@ int HttpClientController::update()
     break;
     case StateProcAP:
     {
-      if (mpClient->connectAP(mpSSID, mpPassword)) mState = StateProcWiFi;
+      mpClient->connectAP(mpSSID, mpPassword);
+      mState = StateProcWiFi;
     }
     break;
     case StateProcWiFi:
